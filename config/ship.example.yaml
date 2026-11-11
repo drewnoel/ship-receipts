@@ -1,0 +1,46 @@
+# ship-receipts config. Copy to ~/.ship-receipts/ship.yaml (or run: python3 tools/receipts.py init).
+# The real file holds your confidential terms, so it is git-ignored. Keep it out of any repo.
+
+cadence:
+  floor_per_week: 2          # the minimum you commit to; nudges fire when this is at risk
+  target_per_week: 3         # stretch goal; the loop ends once the floor is met and the queue is full
+  preferred_days: [tue, wed, thu]
+  min_gap_hours: 24          # spacing between posts
+  week_starts: mon
+
+quiet_hours:                 # no nudges in this window (wraps midnight)
+  start: "21:00"
+  end: "07:00"
+
+nudges:
+  desktop: false             # true = also show a macOS (osascript) / Linux (notify-send) notification
+  throttle_hours: 6          # at most one nudge per this many hours
+  only_when_at_risk: true    # stay silent while the floor is on track and the queue is healthy
+
+platforms: [linkedin]        # optional: x, bluesky. The tool never posts to any of them.
+
+watch:
+  repos:                     # git repos whose commits count as receipts
+    - ~/code/my-service
+    - ~/code/side-project
+  dirs:                      # folders where recently modified files count as receipts (names only, plus .md titles)
+    - ~/work/docs
+  notes_dir: ~/.ship-receipts/notes   # drop quick "what I learned today" notes here (.md / .txt, contents are read)
+  author: ""                 # optional git --author filter, e.g. your name
+  extensions: [.md, .py, .ts, .sql, .ipynb]
+  max_files: 150
+
+queue:
+  fresh_target: 8            # the loop tops up until this many fresh, firewall-clean ideas exist
+  fresh_days: 21             # an idea counts as fresh for this many days
+  dedupe_threshold: 0.75     # word-overlap at which a new idea counts as a duplicate (see docs/FIREWALL.md)
+
+pillars: [BUILD, MEASURE, LEARN, OPINION]   # your content lanes; rename freely
+
+firewall:
+  generic: true              # emails, phones, keys/tokens/webhooks, URL credentials, IDs, internal hosts, money near a named org
+  terms:                     # anything that must never appear in a public post (case-insensitive)
+    - Project Bluebird       # internal codename
+    - acme-internal
+    - 're:\bCUST-\d+\b'   # prefix re: for a regex (here: ticket ids)
+  allow: []                  # substrings to never flag (e.g. your own public company name)

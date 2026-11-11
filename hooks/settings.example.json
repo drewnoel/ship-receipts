@@ -1,0 +1,27 @@
+{
+  "_comment": "Merge the 'hooks' block into ~/.claude/settings.json (user) or .claude/settings.json (project). Replace /path/to/ship-receipts, or run: python3 tools/receipts.py hooks-snippet",
+  "hooks": {
+    "PostToolUse": [
+      {
+        "matcher": "Bash",
+        "hooks": [
+          { "type": "command", "command": "python3 \"/path/to/ship-receipts/hooks/post_commit.py\"", "timeout": 10 }
+        ]
+      }
+    ],
+    "SessionStart": [
+      {
+        "hooks": [
+          { "type": "command", "command": "python3 \"/path/to/ship-receipts/hooks/cadence_nudge.py\" --event session-start", "timeout": 10 }
+        ]
+      }
+    ],
+    "Stop": [
+      {
+        "hooks": [
+          { "type": "command", "command": "python3 \"/path/to/ship-receipts/hooks/cadence_nudge.py\" --event stop", "timeout": 10 }
+        ]
+      }
+    ]
+  }
+}

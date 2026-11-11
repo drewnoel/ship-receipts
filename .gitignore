@@ -1,0 +1,21 @@
+# Real data never belongs in this repo
+.ship-receipts/
+ship.yaml
+config/ship.yaml
+queue.json
+posted.json
+receipts.jsonl
+debriefs.jsonl
+weights.json
+nudge-state.json
+QUEUE.md
+notes/
+*.local.*
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+
+# OS
+.DS_Store

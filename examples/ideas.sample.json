@@ -1,0 +1,78 @@
+[
+ {
+  "title": "Cron job to queue: what broke first",
+  "pillar": "BUILD",
+  "format": "build-in-public",
+  "effort": "M",
+  "receipt": "Migrated a nightly cron job to a work queue with retries; failed runs dropped about 40% in the first two weeks.",
+  "source": "git:sample-service@a1b2c3d",
+  "why_now": "Two weeks of data is in, and queue-vs-cron is a recurring argument on most teams.",
+  "questions": [
+   "What failed the night you decided the cron job had to go?",
+   "What did you expect the queue to fix that it didn't?",
+   "If a teammate asked tomorrow, would you tell them to do the same, and why?"
+  ],
+  "scores": {"receipt": 5, "timeliness": 4, "fit": 5}
+ },
+ {
+  "title": "The dashboard nobody opened",
+  "pillar": "MEASURE",
+  "format": "behind-the-scenes",
+  "effort": "S",
+  "receipt": "Deleted a reporting dashboard after the view logs showed 3 opens in 90 days, and replaced it with one weekly summary message.",
+  "source": "note:2026-03-02-dashboard-cleanup.md",
+  "why_now": "Quarter planning is when teams commission new dashboards.",
+  "questions": [
+   "What made you check the view logs in the first place?",
+   "Who pushed back when you proposed deleting it, and what did they say?",
+   "What does the weekly summary tell people that the dashboard never did?"
+  ],
+  "scores": {"receipt": 4, "timeliness": 3, "fit": 4}
+ },
+ {
+  "title": "Tests before the refactor, not after",
+  "pillar": "OPINION",
+  "format": "unpopular-opinion",
+  "risk": "mild",
+  "effort": "S",
+  "receipt": "Wrote 22 characterization tests before refactoring a billing module; two of them caught behavior nobody had documented.",
+  "source": "git:sample-billing@9f8e7d6",
+  "why_now": "Fresh from the refactor; the two surprises are still vivid.",
+  "questions": [
+   "What were the two behaviors the tests caught, in plain words?",
+   "Where do you think this advice is wrong or overkill?",
+   "What would have happened if you had skipped the tests?"
+  ],
+  "scores": {"receipt": 5, "timeliness": 4, "fit": 4}
+ },
+ {
+  "title": "Reading a vendor benchmark like a skeptic",
+  "pillar": "LEARN",
+  "format": "lessons-list",
+  "effort": "M",
+  "receipt": "Re-ran a vendor's published latency benchmark on our own workload and got numbers about 3x slower.",
+  "source": "file:benchmarks/latency-rerun.md",
+  "why_now": "Renewal conversations start next month.",
+  "questions": [
+   "What was different between their test setup and your workload?",
+   "Which number would you actually use in a decision, and why?",
+   "What is one question you now ask every vendor benchmark?"
+  ],
+  "scores": {"receipt": 5, "timeliness": 3, "fit": 4}
+ },
+ {
+  "title": "Onboarding doc rewritten from new-hire questions",
+  "pillar": "LEARN",
+  "format": "before-after",
+  "effort": "S",
+  "receipt": "Collected every question a new teammate asked in week one and rebuilt the onboarding doc around them.",
+  "source": "note:2026-03-05-onboarding.md",
+  "why_now": "Hiring picks up this quarter.",
+  "questions": [
+   "Which question surprised you most?",
+   "What did you cut from the old doc, and did anyone miss it?",
+   "How will you know if the new version works?"
+  ],
+  "scores": {"receipt": 4, "timeliness": 3, "fit": 3}
+ }
+]
